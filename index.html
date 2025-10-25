@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyran: The Wayfarer RPG</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="./icons/gold.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+
+
+</head>
+
+<body>
+  <div id="landing" class="landing-section">
+    <div class="landing-content">
+      <h1 class="game-title">Kyran:The Wayfarer</h1>
+      <div class="character-creation">
+        <input type="text" id="playerName" placeholder="Masukkan nama Anda" maxlength="20">
+        <select id="playerRole">
+          <option value="">Pilih Role</option>
+          <option value="Merchant">Merchant</option>
+          <option value="Strategist">Strategist</option>
+          <option value="Marketer">Marketer</option>
+        </select>
+        <button id="startQuest" class="start-btn">Start Quest</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="siteIntro" class="intro-section">
+    <div class="intro-content">
+      <h2 class="intro-title">Selamat datang di Kyran:the Wayfarer</h2>
+      <p class="intro-desc">Kyran the Wayfarer adalah sebuah simulasi interaktif yang menggabungkan elemen edukasi
+        bisnis
+        dan permainan RPG. Pelajari tentang pengelolaan keuangan, pemasaran, strategi, dan operasi sambil menyelesaikan
+        quest dan meng-upgrade skill karakter Anda.</p>
+      <ul class="intro-features">
+        <li>Pelajari konsep bisnis lewat quest singkat</li>
+        <li>Kumpulkan XP, level up, dan dapatkan Skill Points</li>
+        <li>Mainkan minigame edukatif seperti Business Canvas dan Pitch Deck</li>
+      </ul>
+      <div class="intro-actions">
+        <button id="enterSite" class="medieval-btn">Masuk ke Quest</button>
+        <button id="skipIntro" class="medieval-btn muted">Langsung ke Login</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="questModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="questTitle"></h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="questDescription"></p>
+        <div id="questTask"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="submitAnswer" class="submit-btn" disabled>Submit</button>
+        <button id="completeQuest" class="complete-btn hidden">Complete Quest</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="levelUpModal" class="modal hidden">
+    <div class="modal-content level-up-content">
+      <div class="level-up-animation">
+        <h2>LEVEL UP!</h2>
+        <div class="level-display-big">Level <span id="newLevel"></span></div>
+        <p>+1 Skill Point Earned!</p>
+        <button id="continuePlaying" class="continue-btn">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="minigameModal" class="modal hidden">
+    <div class="modal-content minigame-content">
+      <div class="modal-header">
+        <h3 id="minigameTitle"></h3>
+        <div class="minigame-timer">Time: <span id="gameTimer">0</span>s</div>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="minigameDescription"></div>
+        <div id="minigameArea"></div>
+        <div class="minigame-controls">
+          <div class="minigame-score">Score: <span id="gameScore">0</span></div>
+          <button id="startMinigame" class="game-btn">Start Game</button>
+        </div>
+        <div class="modal-footer">
+          <button id="submitMinigame" class="submit-btn" disabled>Submit Game</button>
+          <button id="completeMinigame" class="complete-btn hidden">Complete Quest</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

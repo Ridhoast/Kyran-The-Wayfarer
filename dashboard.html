@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyran the Wayfarer - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="./icons/gold.png">
+</head>
+
+<body>
+  <div id="dashboard" class="dashboard">
+    <header class="game-header">
+      <button id="openProfile" class="profile-btn">Profil & Statistik</button>
+      <div class="xp-section grunge-xp">
+        <div class="level-display">Level <span id="currentLevel">1</span></div>
+        <div class="xp-bar-container">
+          <div class="xp-bar grunge-bar">
+            <div id="xpProgress" class="xp-progress grunge-progress"></div>
+          </div>
+          <span class="xp-text"><span id="currentXP">0</span>/<span id="maxXP">50</span> XP</span>
+        </div>
+        <div class="skill-points grunge-sp">SP: <span id="skillPoints">0</span></div>
+      </div>
+      <button id="resetGame" class="reset-btn">Reset Game</button>
+    </header>
+
+    <div id="profileModal" class="modal hidden">
+      <div class="modal-content profile-content">
+        <div class="modal-header">
+          <h3>Profil Karakter</h3>
+          <button class="close-btn" id="closeProfile">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="profile-info-box grunge-box">
+            <div class="profile-row">
+              <span class="profile-label">Nama:</span>
+              <span id="playerNameDisplay"></span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Role:</span>
+              <span id="playerRoleDisplay"></span>
+            </div>
+          </div>
+          <div class="profile-stats-box grunge-box">
+            <div class="profile-row">
+              <img src="icons/gold.png" alt="Gold" class="stat-icon">
+              <span class="profile-label">Gold:</span>
+              <span id="goldDisplay">0</span>
+            </div>
+            <div class="profile-row">
+              <img src="icons/reputation.png" alt="Reputation" class="stat-icon">
+              <span class="profile-label">Reputation:</span>
+              <span id="reputationDisplay">0</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Business:</span>
+              <span id="businessStat">1</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Leadership:</span>
+              <span id="leadershipStat">1</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Innovation:</span>
+              <span id="innovationStat">1</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Influence:</span>
+              <span id="influenceStat">1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="game-content">
+      <section class="quest-board">
+        <h2>Quest Board</h2>
+        <div class="quest-categories">
+          <button class="quest-tab active" data-tab="regular">Regular Quests</button>
+          <button class="quest-tab" data-tab="chains">Quest Chains</button>
+        </div>
+        <div id="questList" class="quest-list"></div>
+        <div id="questChainList" class="quest-chain-list hidden">
+        </div>
+      </section>
+
+      <section class="skill-tree">
+        <h2>Skill Tree</h2>
+        <div class="skill-branches">
+          <div class="skill-branch" data-category="finance">
+            <h3>Finance</h3>
+            <div class="skill-nodes" id="financeSkills"></div>
+          </div>
+          <div class="skill-branch" data-category="marketing">
+            <h3>Marketing</h3>
+            <div class="skill-nodes" id="marketingSkills"></div>
+          </div>
+          <div class="skill-branch" data-category="strategy">
+            <h3>Strategy</h3>
+            <div class="skill-nodes" id="strategySkills"></div>
+          </div>
+          <div class="skill-branch" data-category="operations">
+            <h3>Operations</h3>
+            <div class="skill-nodes" id="operationsSkills"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="questModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="questTitle"></h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="questDescription"></p>
+        <div id="questTask"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="submitAnswer" class="submit-btn" disabled>Submit</button>
+        <button id="completeQuest" class="complete-btn hidden">Complete Quest</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="levelUpModal" class="modal hidden">
+    <div class="modal-content level-up-content">
+      <div class="level-up-animation">
+        <h2>LEVEL UP!</h2>
+        <div class="level-display-big">Level <span id="newLevel"></span></div>
+        <p>+1 Skill Point Earned!</p>
+        <button id="continuePlaying" class="continue-btn">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="minigameModal" class="modal hidden">
+    <div class="modal-content minigame-content">
+      <div class="modal-header">
+        <h3 id="minigameTitle"></h3>
+        <div class="minigame-timer">Time: <span id="gameTimer">0</span>s</div>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="minigameDescription"></div>
+        <div id="minigameArea"></div>
+        <div class="minigame-controls">
+          <div class="minigame-score">Score: <span id="gameScore">0</span></div>
+          <button id="startMinigame" class="game-btn">Start Game</button>
+        </div>
+        <div class="modal-footer">
+          <button id="submitMinigame" class="submit-btn" disabled>Submit Game</button>
+          <button id="completeMinigame" class="complete-btn hidden">Complete Quest</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
